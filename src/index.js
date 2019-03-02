@@ -12,10 +12,11 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-GoogleAPIScript.Create(() => {
-    console.log('injected');
-    const { gapi } = window;
-    gapi.load('client:auth2', () => {
-        console.log('auth2');
+GoogleAPIScript.Create()
+    .then(() => {
+        console.log('injected');
+        const { gapi } = window;
+        gapi.load('client:auth2', () => {
+            console.log('auth2');
+        });
     });
-});

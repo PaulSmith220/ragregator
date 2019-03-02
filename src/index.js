@@ -13,6 +13,10 @@ GoogleAPIScript.Create()
         const { gapi } = window;
         gapi.load('client:auth2', () => {
             console.log('auth2');
-            GoogleDriveAccessRequest.SignIn(gapi, )
+            GoogleDriveAccessRequest.SignIn(gapi, process.env.GOOGLE_API_KEY, process.env.GOOGLE_API_CLIENT_ID)
+                .then((user) => {
+                    console.log('signed in', user);
+                })
+                .catch(error => console.log('error', error));
         });
     });

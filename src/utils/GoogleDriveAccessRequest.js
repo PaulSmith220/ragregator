@@ -24,7 +24,15 @@ class GoogleDriveAccessRequest {
                 discoveryDocs: this.discoveryDocs,
                 scope: this.scope,
             }).then(() => {
-                this.gapi.auth2.getAuthInstance().isSignedIn.listen(resolve);
+                const authInstance = this.gapi.auth2.getAuthInstance();
+                if (authInstance.isSignedIn.get()) {
+                    resolve(authInstance.currentUser.get());
+                    return;
+                }
+                authInstance.isSignedIn.listen(() => {
+                    resolve();
+                });
+                authInstance.signIn();
             }, error => reject(error));
         });
     };

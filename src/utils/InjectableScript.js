@@ -1,7 +1,7 @@
 
 class InjectableScript {
-    src = null;
-    callback = null;
+    src;
+    callback;
 
     constructor(src, callback) {
         this.src = src;

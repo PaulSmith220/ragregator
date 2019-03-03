@@ -1,4 +1,4 @@
-import InjectableScript from './InjectableScript';
+import InjectableScript from '../InjectableScript';
 
 class GoogleAPIScript extends InjectableScript {
     static src = 'https://apis.google.com/js/api.js';
